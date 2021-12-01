@@ -1,0 +1,14 @@
+# 锚点
+bark: &bark
+  url: 'https://api.day.app/JkKBmvPGW96hY3DxBrpM3A/#{title}/#{content}?group=#{title}'
+  freq: '#{freq}'
+echo: &echo
+  command: 'echo hello,#{content}'
+  freq: '#{freq}'
+
+routers:
+  - route: '/bark'
+    hooks:
+      - *bark
+      # - *echo
+listen: 0.0.0.0:7070

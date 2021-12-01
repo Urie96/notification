@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: notification
+    build: .
+    volumes:
+      - ./config.yml:/root/config.yml
+    networks:
+      - redis
+    environment:
+      - GIN_MODE=release
+      - REDIS_ADDR=myredis:6379
+    ports:
+      - 7070:7070
+    restart: unless-stopped
+
+networks:
+  redis:
+    external: true
